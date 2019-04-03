@@ -5,12 +5,10 @@
  * @author Arild Valderhaug
  * @version v0.1 08.02.2019
  */
-public class Book
+public class Book extends PrintMaterial
 {
     // instance variables
-    private String title;
     private String author;
-    private String publisher;
     private int edition;
 
     /**
@@ -22,18 +20,9 @@ public class Book
      */
     public Book(String title, String author, String publisher, int edition)
     {
-        this.title = title;
+        super(title, publisher);
         this.author = author;
-        this.publisher = publisher;
         this.edition = edition;
-    }
-
-    /**
-     * @return the title string of the book
-     */
-    public String getTitle()
-    {
-        return this.title;
     }
 
     /**
@@ -45,18 +34,35 @@ public class Book
     }
 
     /**
-     * @return the publisher string of the book
-     */
-    public String getPublisher()
-    {
-        return this.publisher;
-    }
-
-    /**
      *  @return the edition number of the book
      */
     public int getEdition()
     {
         return this.edition;
     }
+
+    /**
+     * @return String containing all the details of the book
+     */
+    public String getDetails()
+    {
+        String returnString = super.getDetails();
+        returnString += ", Author: " + this.author + ", Edition: " + this.edition;
+        return returnString;
+    }
+
+    // The following are methods to be mutated by subclasses
+    public int getPublishDate()
+    {
+        int i = 0;
+        return i;
+    }
+
+    public String getSeriesName()
+    {
+        String n = new String();
+        return n;
+    }
+
+
 }
