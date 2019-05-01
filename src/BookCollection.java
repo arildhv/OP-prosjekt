@@ -14,7 +14,7 @@ public class BookCollection
     private ArrayList<Book> bookList;
 
     /**
-     * Constructor for objects of class BookCollection
+     * Constructor for objects of
      */
     public BookCollection()
     {

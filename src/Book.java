@@ -1,9 +1,9 @@
 /**
- * Represents a book, with information on
- * title, author, publisher, and edition.
+ * Represents a book, with information on title, author, publisher, and edition.
+ * This class extends PrintMaterial.
  *
  * @author Arild Valderhaug
- * @version v0.1 08.02.2019
+ * @version v1.0
  */
 public class Book extends PrintMaterial
 {
@@ -40,29 +40,4 @@ public class Book extends PrintMaterial
     {
         return this.edition;
     }
-
-    /**
-     * @return String containing all the details of the book
-     */
-    public String getDetails()
-    {
-        String returnString = super.getDetails();
-        returnString += ", Author: " + this.author + ", Edition: " + this.edition;
-        return returnString;
-    }
-
-    // The following are methods to be mutated by subclasses
-    public int getPublishDate()
-    {
-        int i = 0;
-        return i;
-    }
-
-    public String getSeriesName()
-    {
-        String n = new String();
-        return n;
-    }
-
-
 }
