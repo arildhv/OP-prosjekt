@@ -1,9 +1,13 @@
 /**
  * Represents all types of periodicals, with information on
- * title, publisher, number of editions per year, and genre
+ * title, publisher, number of editions per year, and genre.
+ * Specific periodicals types are subclasses that extend this class.
+ *
+ * @author Arild Valderhaug
+ * @version 1.0
  */
-public class Periodical extends PrintMaterial  {
-
+public abstract class Periodical extends PrintMaterial
+{
     private int editionsPerYear;
     private String genre;
 
@@ -28,15 +32,5 @@ public class Periodical extends PrintMaterial  {
     public String getGenre()
     {
         return this.genre;
-    }
-
-    /**
-     * @return String containing all the details of the periodical
-     */
-    public String getDetails()
-    {
-        String returnString = super.getDetails();
-        returnString += ", Genre: " + this.genre + ", Editions per year: " + this.editionsPerYear;
-        return returnString;
     }
 }

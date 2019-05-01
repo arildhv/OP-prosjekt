@@ -1,42 +1,38 @@
+import java.util.ArrayList;
+import java.util.Iterator;
+
 /**
- * Represents a book series
- * TODO Refactor to an array holding the books which make up a specific series
+ * Represents a book series.
+ * The title of the series is stored in a string.
+ * All books that make up the series are individual book objects that are added to the series array.
  */
-public class BookSeries extends Book {
+public class BookSeries extends PrintMaterial {
 
-    private String seriesName;
-    private int publishDate;
+    private ArrayList<Book> bookSeries;
 
-    public BookSeries (String title, String publisher, String author, int edition, String seriesName, int published)
-    {
-        super(title, author, publisher, edition);
-        this.seriesName = seriesName;
-        this.publishDate = published;
-    }
+    public BookSeries (String title, String publisher)
+        {
+        super(title, publisher);
+        this.bookSeries = new ArrayList<>();
+        }
 
     /**
+     * Getter method for the title string of the book series
      * @return the name of the book series
      */
-    public String getSeriesName()
+    public void addItem(Book book)
     {
-        return this.seriesName;
+        this.bookSeries.add(book);
     }
 
     /**
-     * @return the publish date
+     * Accessor method for the iterator of this book series array.
+     * @return the iterator for this book series array
      */
-    public int getPublishDate()
+    public Iterator<Book> getBookSeriesIterator()
     {
-        return this.publishDate;
+        return this.bookSeries.iterator();
     }
 
-    /**
-     * @return String containing all the details of the book series
-     */
-    public String getDetails()
-    {
-        String returnString = super.getDetails();
-        returnString += ", Series: " + this.seriesName + ", Date published: " + this.publishDate;
-        return returnString;
-    }
+
 }

@@ -6,7 +6,7 @@ import java.util.Iterator;
  * Any inquiries into the array are made through this class.
  *
  * @author Arild Valderhaug
- * @version 0.9
+ * @version 1.0
  */
 public class Inventory
 {
@@ -33,6 +33,7 @@ public class Inventory
 
     /**
      * Accessor method for the iterator
+     * @return the iterator for this inventory
      */
     public Iterator<PrintMaterial> getIterator()
     {
@@ -40,12 +41,14 @@ public class Inventory
     }
 
     /**
-     * Search the collection for a specific material given the title, and publisher if known.
-     * If no publisher is entered, only search by title.
-     * Return the material if found.
+     * Search the collection for a specific material given the title and publisher.
+     * @param title The title, entered by the user, to search for
+     * @param publisher The publisher, entered by the user, to search for
+     * @return returns the PrintMaterial object which matches the search criteria. Otherwise returns a null object.
      */
     public PrintMaterial findItemByString(String title, String publisher)
     {
+
         PrintMaterial printMat = null;
         boolean found = false;
 
@@ -53,43 +56,14 @@ public class Inventory
         while ((i < this.printMatList.size()) && !found)
         {
             PrintMaterial m = printMatList.get(i);
-            if(publisher.equals("")) {
-                if (m.getTitle().equals(title)) {
+
+            if((m.getTitle().equals(title)) && m.getPublisher().equals(publisher)){
                     printMat = m;
                     found = true;
-                }
             }
-            else{
-                if((m.getTitle().equals(title)) && m.getPublisher().equals(publisher)){
-                    printMat = m;
-                    found = true;
-                }
-            }
+
             i++;
         }
         return printMat;
-    }
-
-    /**
-     * Search the collection for a material by a given publisher
-     * Will print print details of every item found from that publisher.
-     */
-    public void listByPublisher(String publisher)
-    {
-        boolean found = false;
-
-        int i = 0;
-        while (i < this.printMatList.size())
-        {
-            PrintMaterial m = printMatList.get(i);
-            if (m.getPublisher().equals(publisher)) {
-                System.out.println(m.getDetails());
-                found = true;
-            }
-            i++;
-        }
-        if (!found){
-            System.out.println("No items found.");
-        }
     }
 }
